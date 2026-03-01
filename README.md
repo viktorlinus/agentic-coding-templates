@@ -1,42 +1,69 @@
-# Cole Medin - AI Layer Templates
+# Agentic Coding Templates
 
-Hämtat från: https://github.com/coleam00/link-in-bio-page-builder/tree/main/.claude
+A dead-simple AI layer for building anything with Claude Code. No over-engineering, no complex multi-agent frameworks — just a reliable, repeatable workflow you can make your own.
 
-Baserat på videon: "My COMPLETE Agentic Coding Workflow to Build Anything"
-https://youtu.be/goOZSXmrYQ4
+Inspired by this [YouTube video](https://youtu.be/goOZSXmrYQ4).
 
-## Innehåll
-
-### .claude/commands/
-| Fil | Användning |
-|-----|-----------|
-| `prime.md` | `/prime` - Kör i början av VARJE session. Läser PRD, CLAUDE.md, git log |
-| `create-prd.md` | `/create-prd` - Skapar strukturerad PRD från konversation |
-| `create-rules.md` | `/create-rules` - Genererar CLAUDE.md med regler för projektet |
-| `plan-feature.md` | `/plan-feature` - PIV-loop steg 1: Planerar feature, sparar i `.agents/plans/` |
-| `execute.md` | `/execute` - PIV-loop steg 2: Implementerar från plan-fil |
-| `commit.md` | `/commit` - Standardiserade commit-meddelanden |
-| `init-project.md` | `/init-project` - Initierar nytt projekt |
-
-### .claude/
-| Fil | Användning |
-|-----|-----------|
-| `CLAUDE-template.md` | Mall för CLAUDE.md i nya projekt |
-| `PRD-example.md` | Exempel på färdig PRD |
-
-## PIV-loop Workflow
+## What's included
 
 ```
-1. /prime          → Förstå kodbas + rekommendera nästa fas från PRD
-2. Vibe planning   → Diskutera feature informellt
-3. /plan-feature   → Skapa strukturerad plan med tasks + validering
-4. [Ny session]
-5. /execute [plan] → Implementera (delegera allt till agenten)
-6. Human validate  → Granska + manuell test
-7. /commit         → Commit med standardiserat meddelande
+.claude/
+  CLAUDE-template.md     ← Template for your global rules file
+  PRD-example.md         ← Example of a completed PRD
+  commands/
+    prime.md             ← /prime         — Run at the start of every session
+    create-prd.md        ← /create-prd    — Generate a structured PRD from conversation
+    create-rules.md      ← /create-rules  — Generate your CLAUDE.md global rules
+    plan-feature.md      ← /plan-feature  — PIV loop step 1: plan with tasks + validation
+    execute.md           ← /execute       — PIV loop step 2: implement from plan file
+    commit.md            ← /commit        — Standardized commit messages
+    init-project.md      ← /init-project  — Bootstrap a new project
 ```
 
-## Hur man använder
+## The PIV Loop
 
-Kopiera `.claude/`-mappen till ditt projekt och anpassa efter behov.
-Kom ihåg: **Context is precious** - starta ny session mellan plan och execute.
+**Plan → Implement → Validate** — the core workflow for every feature.
+
+```
+1. /prime            → Catch up on codebase, identify next phase from PRD
+2. Vibe planning     → Casual conversation about the feature (sub-agents for research)
+3. /plan-feature     → Create structured plan with tasks + validation strategy
+                        Saved to .agents/plans/<feature>.md
+4. [New session]     → Context reset — keep it clean before implementation
+5. /execute [plan]   → Agent implements everything, runs tests, validates
+6. Human validate    → Code review + manual smoke test
+7. /commit           → Standardized commit for a clean git history
+```
+
+## The Four Golden Rules
+
+1. **Context is your most precious resource** — Reset between planning and implementation
+2. **Commandify everything** — If you do it twice, make it a command
+3. **Commit history is long-term memory** — Standardized messages help the agent orient itself on `prime`
+4. **System evolution mindset** — Every bug is an opportunity to improve your AI layer
+
+## How to use
+
+Copy the `.claude/` folder into your project and start with:
+
+```
+/init-project
+```
+
+or if you already have an idea:
+
+```
+/create-prd
+```
+
+Adapt the commands to your stack over time. The point is to make this **your own**.
+
+## The AI Layer
+
+Your AI layer consists of three things:
+
+- **PRD** — What you're building
+- **CLAUDE.md** — How to build it (rules, patterns, tech stack)
+- **Commands** — Reusable workflows (prime, plan, execute, commit)
+
+Keep `CLAUDE.md` concise. Use on-demand context files (e.g. `reference/components.md`) for deeper guidance that only loads when needed — progressive disclosure keeps your context clean.
