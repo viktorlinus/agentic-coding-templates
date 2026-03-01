@@ -2,7 +2,7 @@
 
 A dead-simple AI layer for building anything with Claude Code. No over-engineering, no complex multi-agent frameworks — just a reliable, repeatable workflow you can make your own.
 
-Inspired by this [YouTube video](https://youtu.be/goOZSXmrYQ4).
+Inspired by this [YouTube video](https://youtu.be/goOZSXmrYQ4). For the reasoning behind the workflow, see [CONCEPTS.md](./CONCEPTS.md).
 
 ## What's included
 
